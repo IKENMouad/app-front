@@ -6,44 +6,70 @@
                 <p>Vue 3.0.6 and PrimeVue 3.x</p>
 
                 <h4>Getting Started</h4>
-                <p>Sigma is an application template for Vue based on the <a href="https://cli.vuejs.org/">Vue CLI</a> that provides out-of-the-box standard
-                tooling for Vue projects. To get started, clone the <a href="https://github.com/primefaces/sigma-vue">repository</a> from GitHub and install the dependencies with npm or yarn.</p>
-<pre>
+                <p>
+                    Sigma is an application template for Vue based on the
+                    <a href="https://cli.vuejs.org/">Vue CLI</a> that provides
+                    out-of-the-box standard tooling for Vue projects. To get
+                    started, clone the
+                    <a href="https://github.com/primefaces/sigma-vue"
+                        >repository</a
+                    >
+                    from GitHub and install the dependencies with npm or yarn.
+                </p>
+                <pre>
 npm install
-</pre>
+</pre
+                >
 
                 or
 
-<pre>
+                <pre>
 yarn
-</pre>
+</pre
+                >
 
-                <p>Next step is running the application using the serve script and navigate to <b>http://localhost:8080/</b> to view the application.
-                    That is it, you may now start with the development of your application using the Sigma template.</p>
+                <p>
+                    Next step is running the application using the serve script
+                    and navigate to <b>http://localhost:8080/</b> to view the
+                    application. That is it, you may now start with the
+                    development of your application using the Sigma template.
+                </p>
 
                 <pre>
 npm run serve
-</pre>
+</pre
+                >
 
                 <h4>Vue CLI Scripts</h4>
                 <p>Following commands are derived from create-app-app.</p>
-<pre>
+                <pre>
 "npm run serve": Starts the development server
 "npm run build": Builds the application for deployment.
 "npm run lint": Executes the lint checks.
 "npm run test:unit": Runs the tests.
-</pre>
+</pre
+                >
 
                 <h4>Structure</h4>
-                <p>Sigma consists of 2 main parts; the application layout and the resources. <i>App.vue</i> inside src folder is the main component containing the template for the base layout
-                    whereas required resources such as SASS structure for the layout are placed inside the <b>src/assets/layout</b> folder.</p>
-
-                <h4>Templates</h4>
-                <p>Main layout is the template of the <i>App.vue</i>, it is divided into a couple of child components such as topbar, profile, menu and footer. Here is template of the
-                    <i>App.vue</i> component that implements the logic such as menu state, layout modes and so on.
+                <p>
+                    Sigma consists of 2 main parts; the application layout and
+                    the resources. <i>App.vue</i> inside src folder is the main
+                    component containing the template for the base layout
+                    whereas required resources such as SASS structure for the
+                    layout are placed inside the
+                    <b>src/assets/layout</b> folder.
                 </p>
 
-<pre v-code>
+                <h4>Templates</h4>
+                <p>
+                    Main layout is the template of the <i>App.vue</i>, it is
+                    divided into a couple of child components such as topbar,
+                    profile, menu and footer. Here is template of the
+                    <i>App.vue</i> component that implements the logic such as
+                    menu state, layout modes and so on.
+                </p>
+
+                <pre v-code>
 <code><template v-pre>
 &lt;template&gt;
     &lt;div :class="containerClass" @click="onWrapperClick"&gt;
@@ -75,11 +101,18 @@ npm run serve
 </code></pre>
 
                 <h4>Menu</h4>
-                <p>Menu is a separate component defined in <i>AppMenu.vue</i> file based on PrimeNG MenuModel API. In order to define the menuitems,
-                    navigate to data section of <i>App.vue</i> file and define your own model as a nested structure using the menu property.
-                    Here is the menu component from the demo application. Notice that menu object is bound to the model property of AppMenu component as shown above.</p>
+                <p>
+                    Menu is a separate component defined in
+                    <i>AppMenu.vue</i> file based on PrimeNG MenuModel API. In
+                    order to define the menuitems, navigate to data section of
+                    <i>App.vue</i> file and define your own model as a nested
+                    structure using the menu property. Here is the menu
+                    component from the demo application. Notice that menu object
+                    is bound to the model property of AppMenu component as shown
+                    above.
+                </p>
 
-<pre v-code.script>
+                <pre v-code.script>
 <code>
 data() {
     return {
@@ -182,9 +215,13 @@ data() {
 
                 <h4>Dependencies</h4>
 
-                <p>Dependencies of Sigma are listed below and needs to be added to package.json. Sigma has no direct dependency, even PrimeVue components are an optional dependency..</p>
+                <p>
+                    Dependencies of Sigma are listed below and needs to be added
+                    to package.json. Sigma has no direct dependency, even
+                    PrimeVue components are an optional dependency..
+                </p>
 
-<pre v-code.script>
+                <pre v-code.script>
 <code>
 {
     "primevue": "3.3.4",              //optional: PrimeVue components
@@ -195,18 +232,25 @@ data() {
 </code></pre>
 
                 <h4>Integration with an Existing CLI Project</h4>
-				<p>
-					To setup Sigma in an existing project, follow the steps below;
-				</p>
+                <p>
+                    To setup Sigma in an existing project, follow the steps
+                    below;
+                </p>
 
-				<ul>
-					<li>Copy the <i>public/assets</i> folder to your projects folder with the same name</li>
-					<li>Copy all <i>src/App*.vue</i> files to the src folder of your application.</li>
-				</ul>
+                <ul>
+                    <li>
+                        Copy the <i>public/assets</i> folder to your projects
+                        folder with the same name
+                    </li>
+                    <li>
+                        Copy all <i>src/App*.vue</i> files to the src folder of
+                        your application.
+                    </li>
+                </ul>
 
-				<p>Install PrimeVue</p>
+                <p>Install PrimeVue</p>
 
-<pre v-code><code>
+                <pre v-code><code>
 npm install primevue@latest --save
 npm install	primeicons@latest --save
 npm install primeflex@latest --save
@@ -214,14 +258,21 @@ npm install primeflex@latest --save
 </code></pre>
 
                 <h4>Saga Theme</h4>
-                <p>Sigma uses the free Saga-Blue which is a free theme distributed within PrimeVue, however it can be used with any PrimeVue theme as well.</p>
+                <p>
+                    Sigma uses the free Saga-Blue which is a free theme
+                    distributed within PrimeVue, however it can be used with any
+                    PrimeVue theme as well.
+                </p>
 
                 <h4>SASS Variables</h4>
-                <p>In case you'd like to customize the layout variables, open <i>_variables.scss</i> file under src/layout folder. Saving the changes
-                    will be reflected instantly at your browser.</p>
+                <p>
+                    In case you'd like to customize the layout variables, open
+                    <i>_variables.scss</i> file under src/layout folder. Saving
+                    the changes will be reflected instantly at your browser.
+                </p>
 
                 <h3>src/assets/_variables.scss</h3>
-<pre v-code.css>
+                <pre v-code.css>
 <code>
 /* General */
 $fontSize:14px;
@@ -274,64 +325,83 @@ $footerBgColor:#ffffff;
 </code></pre>
 
                 <h4>Menu Modes</h4>
-                <p>Menu has 2 modes, <i>static</i> and <i>overlay</i>. Main layout container element in App.vue is used to define which mode to use by adding specific classes. List
-                    below indicates the style classes for each mode.</p>
+                <p>
+                    Menu has 2 modes, <i>static</i> and <i>overlay</i>. Main
+                    layout container element in App.vue is used to define which
+                    mode to use by adding specific classes. List below indicates
+                    the style classes for each mode.
+                </p>
 
                 <ul>
                     <li>Static: "layout-wrapper layout-static"</li>
                     <li>Overlay: "layout-wrapper layout-overlay"</li>
                 </ul>
 
-                <p>For example to create an overlay menu, the div element should be in following form;</p>
-<pre v-code>
-<code><template v-pre>
-&lt;div class="layout-wrapper layout-static"&gt;
-</template>
+                <p>
+                    For example to create an overlay menu, the div element
+                    should be in following form;
+                </p>
+                <pre v-code>
+<code><template v-pre>&lt;div class="layout-wrapper layout-static"&gt;</template>
 </code></pre>
 
-                <p>It is also possible to leave the choice to the user by keeping the preference at a component and using an expression to bind it so that user can switch between modes. Sample
-                    application has an example implementation of such use case with a computed property. Refer to App.vue for an example.</p>
+                <p>
+                    It is also possible to leave the choice to the user by
+                    keeping the preference at a component and using an
+                    expression to bind it so that user can switch between modes.
+                    Sample application has an example implementation of such use
+                    case with a computed property. Refer to App.vue for an
+                    example.
+                </p>
 
                 <h4>Menu Color Scheme</h4>
-                <p>There are two alternatives as the menu colors schemes; "light" and "dark". A color scheme is applied using the <i>layout-sidebar-light</i> or <i>layout-sidebar-dark</i>
-                to the sidebar element.</p>
+                <p>
+                    There are two alternatives as the menu colors schemes;
+                    "light" and "dark". A color scheme is applied using the
+                    <i>layout-sidebar-light</i> or <i>layout-sidebar-dark</i> to
+                    the sidebar element.
+                </p>
 
                 <b>Dark Menu</b>
-<pre v-code>
-<code><template v-pre>
-&lt;div class="layout-sidebar layout-sidebar-dark"&gt;
-</template>
+                <pre v-code>
+<code><template v-pre>&lt;div class="layout-sidebar layout-sidebar-dark"&gt;</template>
 </code></pre>
 
                 <b>Light Menu</b>
-<pre v-code>
-<code><template v-pre>
-&lt;div class="layout-sidebar layout-sidebar-light"&gt;
-</template>
+                <pre v-code>
+<code><template v-pre>&lt;div class="layout-sidebar layout-sidebar-light"&gt;</template>
 </code></pre>
 
                 <h4>Grid CSS</h4>
-                <p>Sigma uses PrimeFlex CSS Grid throughout the samples. Although any grid library can be used, we recommend using PrimeFlex as your layout framework as it is well tested and supported by PrimeVue. PrimeFlex is
-                    available at <a href="https://www.npmjs.com/package/primeflex">NPM</a>.</p>
+                <p>
+                    Sigma uses PrimeFlex CSS Grid throughout the samples.
+                    Although any grid library can be used, we recommend using
+                    PrimeFlex as your layout framework as it is well tested and
+                    supported by PrimeVue. PrimeFlex is available at
+                    <a href="https://www.npmjs.com/package/primeflex">NPM</a>.
+                </p>
 
                 <h4>Customizing Styles</h4>
-                <p>It is suggested to write your customizations in <i>_overrides.scss</i> file instead of adding them to the
-                    scss files under sass folder to avoid maintenance issues after an update.</p>
+                <p>
+                    It is suggested to write your customizations in
+                    <i>_overrides.scss</i> file instead of adding them to the
+                    scss files under sass folder to avoid maintenance issues
+                    after an update.
+                </p>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
 
 <style scoped>
 pre {
     border-left: 10px solid #7fbcec;
     background: #f0f0f0;
-    font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
+    font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
     text-align: left;
     white-space: pre;
     padding: 1em;
@@ -340,7 +410,7 @@ pre {
 
 i {
     background-color: #fcf2a7;
-    font-family: monaco,Consolas,Lucida Console,monospace;
+    font-family: monaco, Consolas, Lucida Console, monospace;
     font-weight: 700;
     font-style: normal;
     font-size: 14px;

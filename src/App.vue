@@ -1,5 +1,9 @@
 <template>
-    <div :class="containerClass" @click="onWrapperClick">
+    <div
+        v-if="!$route.path.startsWith('/auth/')"
+        :class="containerClass"
+        @click="onWrapperClick"
+    >
         <AppTopBar @menu-toggle="onMenuToggle" />
 
         <transition name="layout-sidebar">
@@ -32,6 +36,9 @@
 
         <AppFooter />
     </div>
+    <div v-else class="container  ">
+        <router-view />
+    </div>
 </template>
 
 <script>
@@ -42,6 +49,14 @@ import AppConfig from './AppConfig.vue';
 import AppFooter from './AppFooter.vue';
 
 export default {
+    components: {
+        AppTopBar: AppTopBar,
+        AppProfile: AppProfile,
+        AppMenu: AppMenu,
+        AppConfig: AppConfig,
+        AppFooter: AppFooter
+    },
+
     data() {
         return {
             layoutMode: 'static',
@@ -50,7 +65,11 @@ export default {
             overlayMenuActive: false,
             mobileMenuActive: false,
             menu: [
-                { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' },
+                {
+                    label: 'Dashboard',
+                    icon: 'pi pi-fw pi-home',
+                    to: '/dashboard'
+                },
                 {
                     label: 'UI Kit',
                     icon: 'pi pi-fw pi-sitemap',
@@ -58,79 +77,95 @@ export default {
                         {
                             label: 'Form Layout',
                             icon: 'pi pi-fw pi-id-card',
-                            to: '/formlayout',
+                            to: '/formlayout'
                         },
                         {
                             label: 'Input',
                             icon: 'pi pi-fw pi-check-square',
-                            to: '/input',
+                            to: '/input'
                         },
                         {
                             label: 'Float Label',
                             icon: 'pi pi-fw pi-bookmark',
-                            to: '/floatlabel',
+                            to: '/floatlabel'
                         },
                         {
                             label: 'Invalid State',
                             icon: 'pi pi-fw pi-exclamation-circle',
-                            to: 'invalidstate',
+                            to: 'invalidstate'
                         },
                         {
                             label: 'Button',
                             icon: 'pi pi-fw pi-mobile',
-                            to: '/button',
+                            to: '/button'
                         },
                         {
                             label: 'Table',
                             icon: 'pi pi-fw pi-table',
-                            to: '/table',
+                            to: '/table'
                         },
                         {
                             label: 'List',
                             icon: 'pi pi-fw pi-list',
-                            to: '/list',
+                            to: '/list'
                         },
                         {
                             label: 'Tree',
                             icon: 'pi pi-fw pi-share-alt',
-                            to: '/tree',
+                            to: '/tree'
                         },
                         {
                             label: 'Panel',
                             icon: 'pi pi-fw pi-tablet',
-                            to: '/panel',
+                            to: '/panel'
                         },
                         {
                             label: 'Overlay',
                             icon: 'pi pi-fw pi-clone',
-                            to: '/overlay',
+                            to: '/overlay'
                         },
                         {
                             label: 'Menu',
                             icon: 'pi pi-fw pi-bars',
-                            to: '/menu',
+                            to: '/menu'
                         },
                         {
                             label: 'Message',
                             icon: 'pi pi-fw pi-comment',
-                            to: '/messages',
+                            to: '/messages'
                         },
                         {
                             label: 'File',
                             icon: 'pi pi-fw pi-file',
-                            to: '/file',
+                            to: '/file'
                         },
                         {
                             label: 'Chart',
                             icon: 'pi pi-fw pi-chart-bar',
-                            to: '/chart',
+                            to: '/chart'
                         },
                         {
                             label: 'Misc',
                             icon: 'pi pi-fw pi-circle-off',
-                            to: '/misc',
+                            to: '/misc'
+                        }
+                    ]
+                },
+                {
+                    label: 'Auth',
+                    icon: 'pi pi-fw pi-lock',
+                    items: [
+                        {
+                            label: 'Login',
+                            icon: 'pi pi-fw pi-desktop',
+                            to: '/auth/login'
                         },
-                    ],
+                        {
+                            label: 'Register',
+                            icon: 'pi pi-fw pi-external-link',
+                            to: '/auth/register'
+                        }
+                    ]
                 },
                 {
                     label: 'Utilities',
@@ -139,44 +174,44 @@ export default {
                         {
                             label: 'Display',
                             icon: 'pi pi-fw pi-desktop',
-                            to: '/display',
+                            to: '/display'
                         },
                         {
                             label: 'Elevation',
                             icon: 'pi pi-fw pi-external-link',
-                            to: '/elevation',
+                            to: '/elevation'
                         },
                         {
                             label: 'Flexbox',
                             icon: 'pi pi-fw pi-directions',
-                            to: '/flexbox',
+                            to: '/flexbox'
                         },
                         {
                             label: 'Icons',
                             icon: 'pi pi-fw pi-search',
-                            to: '/icons',
+                            to: '/icons'
                         },
                         {
                             label: 'Grid System',
                             icon: 'pi pi-fw pi-th-large',
-                            to: '/grid',
+                            to: '/grid'
                         },
                         {
                             label: 'Spacing',
                             icon: 'pi pi-fw pi-arrow-right',
-                            to: '/spacing',
+                            to: '/spacing'
                         },
                         {
                             label: 'Typography',
                             icon: 'pi pi-fw pi-align-center',
-                            to: '/typography',
+                            to: '/typography'
                         },
                         {
                             label: 'Text',
                             icon: 'pi pi-fw pi-pencil',
-                            to: '/text',
-                        },
-                    ],
+                            to: '/text'
+                        }
+                    ]
                 },
                 {
                     label: 'Pages',
@@ -185,24 +220,24 @@ export default {
                         {
                             label: 'Crud',
                             icon: 'pi pi-fw pi-user-edit',
-                            to: '/crud',
+                            to: '/crud'
                         },
                         {
                             label: 'Calendar',
                             icon: 'pi pi-fw pi-calendar-plus',
-                            to: '/calendar',
+                            to: '/calendar'
                         },
                         {
                             label: 'Timeline',
                             icon: 'pi pi-fw pi-calendar',
-                            to: '/timeline',
+                            to: '/timeline'
                         },
                         {
                             label: 'Empty Page',
                             icon: 'pi pi-fw pi-circle-off',
-                            to: '/empty',
-                        },
-                    ],
+                            to: '/empty'
+                        }
+                    ]
                 },
                 {
                     label: 'Menu Hierarchy',
@@ -218,17 +253,17 @@ export default {
                                     items: [
                                         {
                                             label: 'Submenu 1.1.1',
-                                            icon: 'pi pi-fw pi-bookmark',
+                                            icon: 'pi pi-fw pi-bookmark'
                                         },
                                         {
                                             label: 'Submenu 1.1.2',
-                                            icon: 'pi pi-fw pi-bookmark',
+                                            icon: 'pi pi-fw pi-bookmark'
                                         },
                                         {
                                             label: 'Submenu 1.1.3',
-                                            icon: 'pi pi-fw pi-bookmark',
-                                        },
-                                    ],
+                                            icon: 'pi pi-fw pi-bookmark'
+                                        }
+                                    ]
                                 },
                                 {
                                     label: 'Submenu 1.2',
@@ -236,15 +271,15 @@ export default {
                                     items: [
                                         {
                                             label: 'Submenu 1.2.1',
-                                            icon: 'pi pi-fw pi-bookmark',
+                                            icon: 'pi pi-fw pi-bookmark'
                                         },
                                         {
                                             label: 'Submenu 1.2.2',
-                                            icon: 'pi pi-fw pi-bookmark',
-                                        },
-                                    ],
-                                },
-                            ],
+                                            icon: 'pi pi-fw pi-bookmark'
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             label: 'Submenu 2',
@@ -256,17 +291,17 @@ export default {
                                     items: [
                                         {
                                             label: 'Submenu 2.1.1',
-                                            icon: 'pi pi-fw pi-bookmark',
+                                            icon: 'pi pi-fw pi-bookmark'
                                         },
                                         {
                                             label: 'Submenu 2.1.2',
-                                            icon: 'pi pi-fw pi-bookmark',
+                                            icon: 'pi pi-fw pi-bookmark'
                                         },
                                         {
                                             label: 'Submenu 2.1.3',
-                                            icon: 'pi pi-fw pi-bookmark',
-                                        },
-                                    ],
+                                            icon: 'pi pi-fw pi-bookmark'
+                                        }
+                                    ]
                                 },
                                 {
                                     label: 'Submenu 2.2',
@@ -274,24 +309,24 @@ export default {
                                     items: [
                                         {
                                             label: 'Submenu 2.2.1',
-                                            icon: 'pi pi-fw pi-bookmark',
+                                            icon: 'pi pi-fw pi-bookmark'
                                         },
                                         {
                                             label: 'Submenu 2.2.2',
-                                            icon: 'pi pi-fw pi-bookmark',
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
+                                            icon: 'pi pi-fw pi-bookmark'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     label: 'Documentation',
                     icon: 'pi pi-fw pi-question',
                     command: () => {
                         window.location = '#/documentation';
-                    },
+                    }
                 },
                 {
                     label: 'View Source',
@@ -299,16 +334,16 @@ export default {
                     command: () => {
                         window.location =
                             'https://github.com/primefaces/sigma-vue';
-                    },
-                },
-            ],
+                    }
+                }
+            ]
         };
     },
     watch: {
         $route() {
             this.menuActive = false;
             this.$toast.removeAllGroups();
-        },
+        }
     },
     methods: {
         onWrapperClick() {
@@ -382,7 +417,7 @@ export default {
             } else {
                 return true;
             }
-        },
+        }
     },
     computed: {
         containerClass() {
@@ -397,8 +432,8 @@ export default {
                         this.overlayMenuActive && this.layoutMode === 'overlay',
                     'layout-mobile-sidebar-active': this.mobileMenuActive,
                     'p-input-filled': this.$appState.inputStyle === 'filled',
-                    'p-ripple-disabled': this.$primevue.config.ripple === false,
-                },
+                    'p-ripple-disabled': this.$primevue.config.ripple === false
+                }
             ];
         },
         sidebarClass() {
@@ -406,28 +441,21 @@ export default {
                 'layout-sidebar',
                 {
                     'layout-sidebar-dark': this.layoutColorMode === 'dark',
-                    'layout-sidebar-light': this.layoutColorMode === 'light',
-                },
+                    'layout-sidebar-light': this.layoutColorMode === 'light'
+                }
             ];
         },
         logo() {
             return this.layoutColorMode === 'dark'
                 ? 'assets/layout/images/logo-white.svg'
                 : 'assets/layout/images/logo.svg';
-        },
+        }
     },
     beforeUpdate() {
         if (this.mobileMenuActive)
             this.addClass(document.body, 'body-overflow-hidden');
         else this.removeClass(document.body, 'body-overflow-hidden');
-    },
-    components: {
-        AppTopBar: AppTopBar,
-        AppProfile: AppProfile,
-        AppMenu: AppMenu,
-        AppConfig: AppConfig,
-        AppFooter: AppFooter,
-    },
+    }
 };
 </script>
 
