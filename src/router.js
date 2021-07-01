@@ -3,7 +3,21 @@ import Dashboard from './components/Dashboard.vue';
 
 const routes = [
     {
-        path: '/',
+        path: '/auth',
+        component: () => import('./components/auth/Index.vue'),
+        children: [
+            {
+                path: 'login',
+                component: () => import('./components/auth/Login.vue'),
+            },
+            {
+                path: 'register',
+                component: () => import('./components/auth/Register.vue'),
+            },
+        ],
+    },
+    {
+        path: '/dashboard',
         name: 'dashboard',
         component: Dashboard,
     },
